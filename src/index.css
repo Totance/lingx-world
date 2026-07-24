@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #050505;
+  font-family: 'Inter', 'PingFang SC', 'Noto Sans SC', 'HarmonyOS Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(245, 240, 232, 0.15);
+  color: #f5f0e8;
+}
+
+/* ─── HoverText 逐字翻牌 ──────────────────────── */
+.ht-container {
+  line-height: 1.6;
+  cursor: default;
+}
+
+.ht-item {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  transition: transform 0.3s cubic-bezier(.25,1,.5,1);
+  transition-delay: calc(var(--i, 0) * 20ms);
+}
+
+.ht-pri,
+.ht-sec {
+  display: inline-block;
+  transition: transform 0.45s cubic-bezier(.25,1,.5,1);
+  transition-delay: calc(var(--i, 0) * 20ms);
+  white-space: pre;
+}
+
+.ht-sec {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #f9b639;  /* 高亮金色 */
+  transform: translate3d(0, 105%, 0);
+  z-index: 1;
+}
+
+/* hover 时: 原文字上滑, 高亮字滑入 */
+.ht-container:hover .ht-pri {
+  transform: translate3d(0, -105%, 0);
+}
+
+.ht-container:hover .ht-sec {
+  transform: translate3d(0, 0, 0);
+}

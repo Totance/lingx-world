@@ -1,0 +1,5 @@
+node_modules/
+dist - 副本/
+Files/
+.vite/
+*.log
